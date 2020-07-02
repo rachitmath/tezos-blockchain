@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "tezos-blockchain"
+    }
+  },
+  "defaultProject": "tezos-blockchain",
+  "cli": {
+    "analytics": "24d1ea2c-04f7-4d0a-a2c9-265f1fb06eea"
+  }
 }
