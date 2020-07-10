@@ -4,10 +4,6 @@ This is an Angular(V10) application to show operations provided by [tzstats API]
 
 This will list down all the transaction in table using virtual scroll. This is a standard Angular CLI application, so the steps to build, run, test and e2e are the normal ones, please read on to see more information about it.
 
-# Demo
-
-You can visit http://tezostats..prealpha.co to see the demo.
-
 # How to run locally
 
 1. Clone this repository and install dependencies using `npm install` inside the cloned folder
