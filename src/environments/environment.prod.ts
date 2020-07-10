@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  baseUrl: 'https://api.tzstats.com/tables/op'
+  baseUrl: 'https://api.tzstats.com/tables/op',
+  transactionLimit: 10
 };

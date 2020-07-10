@@ -20,6 +20,12 @@ import { TransactionHistoryService } from '../shared/services/transaction-histor
 export class HomeComponent implements OnInit, AfterViewInit {
 
   @ViewChild(CdkVirtualScrollViewport) virtualScroll: CdkVirtualScrollViewport;
+  public tableHeader = [
+    'Type',
+    'Amount XTZ (USD)',
+    'Date',
+    'Address',
+  ];
 
   public transactions: TransactionHistory[];
 
