@@ -24,6 +24,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -88,6 +89,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -123,6 +125,7 @@
   },
   "defaultProject": "tezos-blockchain",
   "cli": {
-    "analytics": "24d1ea2c-04f7-4d0a-a2c9-265f1fb06eea"
+    "defaultCollection": "@ngrx/schematics",
+    "analytics": "d5b48058-9e0c-4f54-b5e6-60430dc89a0f"
   }
 }

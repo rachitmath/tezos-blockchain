@@ -1,1 +1,35 @@
-<p>home works!</p>
+<div class="container d-flex align-items-center justify-content-center h-100">
+    <div class="row w-100">
+        <div class="col-12">
+            <div class="card p-5">
+                <h1><i class="fas fa-history mr-2"></i>Recent Transactions</h1>
+                <cdk-virtual-scroll-viewport [itemSize]="50" class="example-viewport">
+                    <table class="table">
+                        <thead>
+                            <tr class="bg-light">
+                                <th class="text-muted" scope="col">Type</th>
+                                <th class="text-muted" scope="col">Amount XTZ (USD)</th>
+                                <th class="text-muted" scope="col">Date</th>
+                                <th class="text-muted" scope="col">Address</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *cdkVirtualFor="let transaction of transactions">
+                                <td class="type" scope="row">{{transaction.type}}</td>
+                                <td>
+                                    <span class="xtz mr-1">{{transaction.amount | number:'1.1-1'}} XTZ</span>
+                                    <span class="usd text-muted">
+                                        {{convertXTZToUSD(transaction.amount) | number:'1.1-1'}}
+                                        USD
+                                    </span>
+                                </td>
+                                <td>{{transaction.date | date:'MMM d yyyy, hh:mm'}}</td>
+                                <td>{{convertSenderAddress(transaction.senderAddress)}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </cdk-virtual-scroll-viewport>
+            </div>
+        </div>
+    </div>
+</div>
