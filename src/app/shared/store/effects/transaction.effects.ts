@@ -11,8 +11,14 @@ import { GetTransactions, TransactionSuccess, LoadMoreTransactions } from '../ac
 @Injectable()
 export class TransactionEffects {
 
-    constructor(private actions$: Actions, private transactionsService: TransactionHistoryService) { }
+    constructor(
+        private actions$: Actions,
+        private transactionsService: TransactionHistoryService
+    ) { }
 
+    /***
+        * loadTransactions$ will fetch transaction based Action Type
+     ***/
     loadTransactions$ = createEffect(() => {
         return this.actions$.pipe(
             ofType(GetTransactions),
@@ -25,6 +31,9 @@ export class TransactionEffects {
         );
     });
 
+    /***
+        * loadMoreTransactions$ will fetch transaction by curaor id based Action Type
+     ***/
     loadMoreTransactions$ = createEffect(() => {
         return this.actions$.pipe(
             ofType(LoadMoreTransactions),

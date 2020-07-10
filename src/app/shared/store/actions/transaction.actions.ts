@@ -1,6 +1,10 @@
 import { Action, createAction, props } from '@ngrx/store';
+
 import { TransactionHistory } from '../../models/transaction-history';
 
+/***
+  * ENUM for Transaction Action Types
+ ***/
 export enum TransactionActionTypes {
   GetTransactions = '[Transaction] Get Transactions',
   TransactionSuccess = '[Transaction] Transaction Success',

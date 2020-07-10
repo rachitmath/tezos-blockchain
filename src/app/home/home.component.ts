@@ -38,14 +38,17 @@ export class HomeComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.transactionStore.subscribe((transactions) => (this.transactions = [...transactions]));
     this.store.dispatch({ type: GetTransactions.type });
-    this.subscribeToActions();
+    this.renderActions();
   }
 
   ngAfterViewInit(): void {
-    this.onScrollDown();
+    this.onScroll();
   }
 
-  subscribeToActions(): void {
+  /***
+    * This will render the action
+  ***/
+  renderActions(): void {
     this.action.pipe(ofType(TransactionSuccess)).subscribe(() => {
       this.virtualScroll.setRenderedRange({
         start: this.virtualScroll.getRenderedRange().end,
@@ -57,7 +60,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
     });
   }
 
-  onScrollDown(): void {
+  /***
+    * Call on scroll and fetch the next tramsaction list
+  ***/
+  onScroll(): void {
     this.scrollDispatcher
       .scrolled()
       .pipe(
@@ -71,17 +77,25 @@ export class HomeComponent implements OnInit, AfterViewInit {
       });
   }
 
+  /***
+    * Add Transactions By cursor id
+  ***/
   addTransactionsByCursorId(transactionCursorId): void {
     this.store.dispatch({ type: LoadMoreTransactions.type, payload: { cursorId: transactionCursorId } });
   }
 
+  /***
+    * convertXTZToUSD will convert XTZ ti USD
+  ***/
   // tslint:disable-next-line: typedef
   convertXTZToUSD(xtzValue) {
     const xtzUsdRate = this.transactionService.xtzUSDValue;
     return xtzValue * xtzUsdRate;
   }
 
-
+  /***
+    * convertSenderAddress will convert the sender address to ellipsis
+  ***/
   // tslint:disable-next-line: typedef
   convertSenderAddress(address: string) {
     const subStr = address.split('tz')[1].substring(0, 5);
