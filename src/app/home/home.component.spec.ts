@@ -41,7 +41,6 @@ describe('HomeComponent', () => {
   it('should have table HTML element', () => {
     const table = fixture.debugElement.query(By.css('.table')).nativeElement;
     expect(table.innerHTML).not.toBeNull();
-    // console.log(board.innerHTML)
     expect(table.innerHTML.length).toBeGreaterThan(0);
   });
 
