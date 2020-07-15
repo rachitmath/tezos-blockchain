@@ -3,6 +3,11 @@ import { By } from '@angular/platform-browser';
 
 import { HomeComponent } from './home.component';
 import { MaterialModule } from '../shared/modules/material/material.module';
+import { StoreModule, Store } from '@ngrx/store';
+import { transactionsReducer } from '../shared/store/reducers/transaction.reducer';
+import { TransactionEffects } from '../shared/store/effects/transaction.effects';
+import { EffectsModule } from '@ngrx/effects';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -10,7 +15,14 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [MaterialModule],
+      imports: [
+        HttpClientModule,
+        MaterialModule,
+        StoreModule.forRoot({}),
+        EffectsModule.forRoot([]),
+        StoreModule.forFeature('transactions', transactionsReducer),
+        EffectsModule.forFeature([TransactionEffects]),
+      ],
       declarations: [HomeComponent]
     })
       .compileComponents();
@@ -27,8 +39,10 @@ describe('HomeComponent', () => {
   });
 
   it('should have table HTML element', () => {
-    const table = fixture.debugElement.query(By.css('table'));
-    expect(table).toBeTruthy();
+    const table = fixture.debugElement.query(By.css('.table')).nativeElement;
+    expect(table.innerHTML).not.toBeNull();
+    // console.log(board.innerHTML)
+    expect(table.innerHTML.length).toBeGreaterThan(0);
   });
 
   it('should have material virtual scroll', () => {
